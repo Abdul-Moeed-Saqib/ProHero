@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Test>
+
+<head>
+    <title>Charities</title>
+    <link rel="stylesheet" href="~/css/charityList.css"/>
+</head>
+
+<body>
+    <div class="charity-menu">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li class="charity-item" style="list-style: none;">
+                    <h4>@item.Name</h4>
+                    <h6>@item.Location</h6>
+                    <p>@item.Description</p>
+                </li>
+            }
+        </ul>
+    </div>
+</body>
