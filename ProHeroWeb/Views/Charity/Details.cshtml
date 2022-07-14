@@ -1,0 +1,20 @@
+﻿@model Charity
+
+@{
+    Layout = null;
+}
+
+<body>
+    <img class="emergency-display" src="~/img/kids.jpg"/>
+    <div class="scroll-bg">
+        <div class="scroll-div">
+            <div class="content-description">
+                 <h2>@Model.Name</h2>
+                 <h6>Donated: $@Model.Donated to $@Model.DonationPlan</h6>
+                 <h6>Orgranizer: @Model.Organizer</h6>
+                 <br />
+                <p>@Model.LargeDescription</p>
+            </div>
+        </div>
+    </div>
+</body>

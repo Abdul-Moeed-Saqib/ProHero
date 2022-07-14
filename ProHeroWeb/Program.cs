@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using ProHeroWeb.Data;
+using ProHeroWeb.Repository;
+using ProHeroWeb.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ProHeroDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("LocalDbConnection")
+    ));
+builder.Services.AddScoped<ICharityRepo, CharityRepo>();
 
 var app = builder.Build();
 

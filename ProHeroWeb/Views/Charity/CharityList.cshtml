@@ -1,21 +1,37 @@
-﻿@model IEnumerable<Test>
+﻿@model IEnumerable<Charity>
 
 <head>
     <title>Charities</title>
     <link rel="stylesheet" href="~/css/charityList.css"/>
+    <script src="~/js/details.js"></script>
 </head>
 
 <body>
+    <!-- Charity List -->
     <div class="charity-menu">
         <ul>
             @foreach (var item in Model)
             {
-                <li class="charity-item" style="list-style: none;">
+                <li data-id="@item.CharityId" class="charity-item" onclick="charitydetail(this)" style="list-style: none;">
                     <h4>@item.Name</h4>
                     <h6>@item.Location</h6>
-                    <p>@item.Description</p>
+                    <p>@item.SmallDescription</p>
                 </li>
             }
         </ul>
     </div>
+
+<!-- Charity Description -->
+<div class="modal fade" id="charityDescription" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button class="donate-button" type="button" class="btn btn-primary">Donate</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>

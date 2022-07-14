@@ -6,7 +6,7 @@
 .charity-menu {
     position: fixed;
     left: 0;
-    padding: 7px;
+    padding: 10px;
     width: 500px;
     height: 85vh;
     overflow-y: auto;
@@ -29,8 +29,54 @@
     border-bottom-left-radius: 10px;
 }
 
+.emergency-display {
+    position: center;
+    width: 665px
+}
+
+.modal-dialog {
+    width: 700px;
+    max-width: 100%;
+    height: 550px;
+}
+
+.modal-content {
+    overflow-y: scroll;
+    overflow-x: hidden
+}
+
+.donate-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #ff6a00;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px #999;
+}
+
+.donate-button:hover {
+    background-color: #A84420
+}
+
+.donate-button:active {
+    background-color: #A84420;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.content-description {
+    padding: 20px;
+}
+
+
 ::-webkit-scrollbar {
-    width:5px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,6 +84,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #00ffff;
+    background: #964B00;
     border-radius: 10px;
 }
