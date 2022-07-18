@@ -6,22 +6,22 @@ namespace ProHeroWeb.Controllers
 {
     public class CharityController : Controller
     {
-        //private List<Test> charities;
-        private ICharityRepo charityRepo;
+        private readonly ICharityRepo charityRepo;
 
         public CharityController(ICharityRepo charityRepo)
         {
             this.charityRepo = charityRepo;
         }
 
-        public IActionResult CharityList(string country)
+        public async Task<IActionResult> CharityList(string country)
         {
-            return View("CharityList", charityRepo.GetCharitiesByCountry(country));
+            return View("CharityList", await charityRepo.GetCharitiesByCountry(country));
         }
 
-        public IActionResult Details(string charityId)
+        [HttpPost]
+        public async Task<IActionResult> Details(string charityId)
         {
-            var charity = charityRepo.GetCharityById(charityId).Result; 
+            var charity = await charityRepo.GetCharityById(charityId); 
             return View("Details", charity);  
         }
     }

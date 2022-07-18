@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "ViewCart";
+}
+
+<head>
+
+</head>
+
+<body>
+    <div class="cart-table-div">
+        <table class="cart-table" table-bordered table-striped style="width: 100%">
+            <thead>
+                <tr>
+                    <th>
+                        Charity Name
+                    </th>
+                    <th>
+                        Donated to
+                    </th>
+                    <th>
+                        Donated
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in ViewBag.Cart)
+                {
+                    <tr>
+                        <td width="20%">@item.Charity.Charity.Name</td>
+                        <td width="20%">@item.Charity.Charity.Organizer</td>
+                        <td width="20%">@string.Format("{0:C}", (item.Charity.Donated * item.Quantity))</td>
+                        <td width="20%">@item.Quantity</td>
+                        <td><a asp-controller="cart" asp-action="Remove" asp-route-charityId="@item.Charity.Charity.CharityId">Remove</a></td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        @ViewBag.total
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+

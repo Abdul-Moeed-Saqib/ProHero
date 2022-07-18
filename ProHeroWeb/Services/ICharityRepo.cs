@@ -4,7 +4,7 @@ namespace ProHeroWeb.Services
 {
     public interface ICharityRepo
     {
-        IEnumerable<Charity> GetCharitiesByCountry(string country);
+        Task<IEnumerable<Charity>> GetCharitiesByCountry(string country);
         Task<Charity> GetCharityById(string id);
     }
 }
