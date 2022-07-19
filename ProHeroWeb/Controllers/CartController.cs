@@ -31,29 +31,25 @@ namespace ProHeroWeb.Controllers
         {
             var charityItem = new CharityItem();
             var charity = await charityRepo.GetCharityById(charityId.ToString());
+            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
 
-            if (SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart") == null)
+            if (cart == null)
             {
-                var cart = new List<ShoppingCart>();
-
-                charityItem.Charity = charity;
-                charityItem.Donated += donated;
-                cart.Add(new ShoppingCart() { Charity = charityItem, Quantity = 1 });
-                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                var newCart = new List<ShoppingCart>();
+                AddingToCart(donated, charityItem, charity, newCart);
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", newCart);
 
             }
             else
             {
-                var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
-
-                if (IsExist(charityId))
+                if (IsExist(charityId, cart))
                 {
                     var index = cart.FindIndex(i => i.Charity.Charity.CharityId == charityId);
                     cart[index].Quantity++;
                 }
                 else
                 {
-                    cart.Add(new ShoppingCart() { Charity = charityItem, Quantity = 1});
+                    AddingToCart(donated, charityItem, charity, cart);
                 }
 
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
@@ -66,16 +62,30 @@ namespace ProHeroWeb.Controllers
         {
             var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
             var index = cart.FindIndex(i => i.Charity.Charity.CharityId == charityId);
-            cart.RemoveAt(index);
+
+            if (cart[index].Quantity > 1)
+            {
+                cart[index].Quantity--;
+            }
+            else
+            {
+                cart.RemoveAt(index);
+            }
+
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
 
             return RedirectToAction("ViewCart");
         }
 
-        private bool IsExist(long charityId)
+        private static void AddingToCart(float donated, CharityItem charityItem, Charity charity, List<ShoppingCart> cart)
         {
-            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
+            charityItem.Charity = charity;
+            charityItem.Donated += donated;
+            cart.Add(new ShoppingCart() { Charity = charityItem, Quantity = 1 });
+        }
 
+        private bool IsExist(long charityId, List<ShoppingCart> cart)
+        {
             return cart.Any(i => i.Charity.Charity.CharityId == charityId);
         }
     }
