@@ -17,12 +17,14 @@ namespace ProHeroWeb.Controllers
         public IActionResult ViewCart()
         {
             var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
+
             if (cart == null)
             {
                 cart = new List<ShoppingCart>();
             }
+
             ViewBag.Cart = cart;
-            ViewBag.total = cart.Sum(c => c.Charity.Donated * c.Quantity);
+            ViewBag.total = cart.Sum(c => c.Charity.Donated);
             return View();
         }
 
@@ -45,6 +47,9 @@ namespace ProHeroWeb.Controllers
                 if (IsExist(charityId, cart))
                 {
                     var index = cart.FindIndex(i => i.Charity.Charity.CharityId == charityId);
+
+                    cart[index].Charity.DonatedStack.Add(donated);
+                    cart[index].Charity.Donated += donated;
                     cart[index].Quantity++;
                 }
                 else
@@ -65,7 +70,10 @@ namespace ProHeroWeb.Controllers
 
             if (cart[index].Quantity > 1)
             {
+                var lastDonation = cart[index].Charity.DonatedStack.Last();
                 cart[index].Quantity--;
+                cart[index].Charity.Donated -= lastDonation;
+                cart[index].Charity.DonatedStack.Remove(lastDonation);
             }
             else
             {
@@ -81,6 +89,7 @@ namespace ProHeroWeb.Controllers
         {
             charityItem.Charity = charity;
             charityItem.Donated += donated;
+
             cart.Add(new ShoppingCart() { Charity = charityItem, Quantity = 1 });
         }
 

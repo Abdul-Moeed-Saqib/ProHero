@@ -4,12 +4,12 @@
 }
 
 <head>
-
+    <link rel="stylesheet" href="~/css/cart.css"/>
 </head>
 
 <body>
-    <div class="cart-table-div">
-        <table class="cart-table" table-bordered table-striped style="width: 100%">
+    <div class="cart-page">
+        <table>
             <thead>
                 <tr>
                     <th>
@@ -30,20 +30,30 @@
                 @foreach(var item in ViewBag.Cart)
                 {
                     <tr>
-                        <td width="20%">@item.Charity.Charity.Name</td>
-                        <td width="20%">@item.Charity.Charity.Organizer</td>
-                        <td width="20%">@string.Format("{0:C}", (item.Charity.Donated * item.Quantity))</td>
-                        <td width="20%">@item.Quantity</td>
-                        <td><a asp-controller="cart" asp-action="Remove" asp-route-charityId="@item.Charity.Charity.CharityId">Remove</a></td>
+                        <td>
+                            <div class="cart-info">
+                                <p id="charity-name">@item.Charity.Charity.Name</p>
+                                <small class="country-text">Country: </small>@item.Charity.Charity.Country
+                                <a class="remove-button" asp-controller="cart" asp-action="Remove" asp-route-charityId="@item.Charity.Charity.CharityId">Remove</a>
+                            </div>
+                        </td>
+                        <td>@item.Charity.Charity.Organizer</td>
+                        <td>@string.Format("{0:C}", item.Charity.Donated)</td>
+                        <td>@item.Quantity</td>
                     </tr>
                 }
-                <tr>
-                    <td>
-                        @ViewBag.total
-                    </td>
-                </tr>
             </tbody>
         </table>
+
+        <br />
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Total</td>
+                    <td>@string.Format("{0:C}", ViewBag.total)</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 

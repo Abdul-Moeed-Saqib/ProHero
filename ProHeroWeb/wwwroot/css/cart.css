@@ -1,0 +1,87 @@
+﻿
+.cart-page {
+    margin: 80px auto;
+}
+
+.charity-name::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.country-text {
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 5px;
+    color: #ffffff;
+    background-color: burlywood;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 10px 5px;
+}
+
+table tr {
+    border-bottom: 1px solid black;
+}
+
+table tr:last-child {
+    border-bottom: none;
+}
+
+td input {
+    width: 40px;
+    height: 30px;
+    padding: 5px
+}
+
+td a {
+    display: inline-block;
+    padding: 10px 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px;
+}
+
+td a:hover {
+    background-color: #3e8e41;
+}
+
+td a:active {
+    background-color: #3e8e41;
+    transform: translateY(4px);
+}
+
+
+
+.total-price {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-price table {
+    border-top: 3px solid #ff523b;
+    width: 100%;
+    max-width: 200px;
+
+}
+
+td:last-child {
+    text-align: right;
+}
+
