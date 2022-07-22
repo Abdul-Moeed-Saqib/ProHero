@@ -1,9 +1,7 @@
-const country = document.getElementById("country");
-const afg = document.getElementById("AF");
+function countryName(element, country) {
+    document.getElementById('country-name').innerHTML = country;
+}
 
-
-afg.addEventListener("mouseenter", countryName);
-
-function countryName() {
-    country.innerHTML = "Afghanistan";
+function removeCountryName() {
+    document.getElementById('country-name').innerHTML = "";
 }

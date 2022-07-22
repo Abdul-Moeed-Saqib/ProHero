@@ -18,13 +18,12 @@ namespace ProHeroWeb.Controllers
         {
             var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
 
-            if (cart == null)
+            if (cart != null)
             {
-                cart = new List<ShoppingCart>();
+                ViewBag.Cart = cart;
+                ViewBag.total = cart.Sum(c => c.Charity.Donated);
             }
 
-            ViewBag.Cart = cart;
-            ViewBag.total = cart.Sum(c => c.Charity.Donated);
             return View();
         }
 

@@ -8,7 +8,12 @@
 </head>
 
 <body>
-    <div class="cart-page">
+  <div class="wrapper">
+       <div class="border-page"> 
+        <h1>Your Cart</h1>
+    @if (ViewBag.Cart != null && ViewBag.Cart.Count != 0)
+    {
+        <div class="cart-page">
         <table>
             <thead>
                 <tr>
@@ -34,6 +39,7 @@
                             <div class="cart-info">
                                 <p id="charity-name">@item.Charity.Charity.Name</p>
                                 <small class="country-text">Country: </small>@item.Charity.Charity.Country
+                                <br />
                                 <a class="remove-button" asp-controller="cart" asp-action="Remove" asp-route-charityId="@item.Charity.Charity.CharityId">Remove</a>
                             </div>
                         </td>
@@ -50,10 +56,19 @@
             <table>
                 <tr>
                     <td>Total</td>
-                    <td>@string.Format("{0:C}", ViewBag.total)</td>
+                    <td><h4>@string.Format("{0:C}", ViewBag.total)</h4></td>
                 </tr>
             </table>
         </div>
+        </div>
+    }
+    else
+    {
+        <br />
+        <h5>Your cart is empty</h5>
+    }
     </div>
+  </div>
+
 </body>
 

@@ -1,6 +1,13 @@
-﻿
+﻿.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1150px;
+}
+
 .cart-page {
     margin: 80px auto;
+    width: 80%;
+    text-align: left
 }
 
 .charity-name::after {
@@ -10,6 +17,15 @@
 
 .country-text {
     font-weight: bold;
+}
+
+.border-page {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+    text-align: center;
+    border: 2px groove;
+    border-radius: 5px;
+    background-color: aliceblue;
 }
 
 table {
@@ -31,7 +47,7 @@ td {
 }
 
 table tr {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid burlywood;
 }
 
 table tr:last-child {
@@ -46,7 +62,7 @@ td input {
 
 td a {
     display: inline-block;
-    padding: 10px 10px;
+    padding: 8px 8px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -67,7 +83,10 @@ td a:active {
     transform: translateY(4px);
 }
 
-
+td .remove-button {
+    position: relative;
+    left: 175px;
+}
 
 .total-price {
     display: flex;
