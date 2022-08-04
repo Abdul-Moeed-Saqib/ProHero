@@ -16,7 +16,7 @@
             @foreach (var item in Model)
             {
                 <li data-id="@item.CharityId" class="charity-item" onclick="charitydetail(this)" style="list-style: none;">
-                    <h4>@item.Name</h4>
+                    <h4 class="charity-name">@item.Name</h4>
                     <h6>@item.Location</h6>
                     <p>@item.SmallDescription</p>
                 </li>
@@ -49,7 +49,11 @@
   
 </ul>
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">Map</div>
+  <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+      <svg baseprofile="tiny" stroke-linecap="round" stroke-linejoin="round" version="1.2" viewbox="0 0 1000 763" width="1000" xmlns="http://www.w3.org/2000/svg">
+        @await Component.InvokeAsync("CountryMap", ViewBag.Country);
+      </svg>
+  </div>
   <div class="tab-pane fade" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">Status</div>
 </div>
 </div>

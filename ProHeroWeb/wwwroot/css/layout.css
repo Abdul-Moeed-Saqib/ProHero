@@ -1,0 +1,16 @@
+﻿.navbar-nav {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    position: relative; right: 10%;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+
+.navbar-brand {
+    position: relative; left: 30%;
+}

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProHeroWeb.Data;
 using ProHeroWeb.Models;
 using System.Diagnostics;
 
@@ -11,10 +12,12 @@ namespace ProHeroWeb.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            
         }
 
         public IActionResult Index()
         {
+            ViewBag.Status = CountryHungerStatus.ResultStatus();
             return View();
         }
 

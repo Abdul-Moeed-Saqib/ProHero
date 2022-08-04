@@ -4,13 +4,17 @@
     Layout = null;
 }
 
-<body>
+<body class="details-tab">
     <img class="emergency-display" src="~/img/kids.jpg"/>
     <div class="scroll-bg">
         <div class="scroll-div">
             <div class="content-description">
                  <h2>@Model.Name</h2>
                  <h6>Donated: @string.Format("{0:C} to {1:C}", Model.Donated, Model.DonationPlan)</h6>
+                 <div class="progress" style="width: 70%; height: 5px">
+                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="@Model.DonationPlan" 
+                     style="width: @string.Format("{0}%", (Model.Donated / Model.DonationPlan) * 100)" ></div>
+                 </div>
                  <h6>Orgranizer: @Model.Organizer</h6>
                  <br />
                 <p>@Model.LargeDescription</p>
@@ -19,8 +23,15 @@
     </div>
     <div class="modal-footer">
         <form method="post">
-            <input name="donated" type="number" step="0.01" min="0"/>
-            <button class="donate-button" type="submit" class="btn btn-primary" asp-route-charityId="@Model.CharityId" asp-controller="Cart" asp-action="AddToCart">Donate</button>
+            <div class="input-group mb-0">
+                 <span class="input-group-text">$</span>
+                <input class="form-control" name="donated" type="number" step="0.01" min="0" required />
+                <div class="input-group-append">
+                    <button class="donate-button" type="submit" class="btn btn-primary" asp-route-charityId="@Model.CharityId" asp-controller="Cart" asp-action="AddToCart">Donate</button>
+                </div>
+            </div>
+            
+            @*<i class="bi bi-currency-dollar"><input class="donate-input" name="donated" type="number" step="0.01" min="0" required/></i>*@
         </form>
       </div>
 </body>

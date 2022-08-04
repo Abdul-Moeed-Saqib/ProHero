@@ -1,4 +1,5 @@
 ﻿.wrapper {
+    padding: 45px;
     margin-left: auto;
     margin-right: auto;
     width: 1150px;
@@ -21,23 +22,23 @@
 
 .border-page {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 10px;
+    padding: 12px;
     text-align: center;
-    border: 2px groove;
-    border-radius: 5px;
-    background-color: aliceblue;
+    border: 2px groove #0F2537;
+    border-radius: 12px;
+    background-color: wheat;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    color: black;
 }
 
 th {
     text-align: left;
     padding: 5px;
-    color: #ffffff;
-    background-color: burlywood;
+    background-color: #FFA500;
     font-weight: normal;
     text-transform: uppercase;
 }
@@ -47,7 +48,7 @@ td {
 }
 
 table tr {
-    border-bottom: 1px solid burlywood;
+    border-bottom: 2px solid #0F2537;
 }
 
 table tr:last-child {
@@ -68,14 +69,13 @@ td a {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #ff6a00;
     border: none;
     border-radius: 15px;
-    box-shadow: 0 9px;
 }
 
 td a:hover {
-    background-color: #3e8e41;
+    background-color: #A84420;
 }
 
 td a:active {
@@ -85,7 +85,13 @@ td a:active {
 
 td .remove-button {
     position: relative;
-    left: 175px;
+    top: 5px;
+    font-size: 15px;
+}
+
+td .remove-button:hover {
+    box-shadow: none;
+    color: black;
 }
 
 .total-price {
@@ -94,7 +100,7 @@ td .remove-button {
 }
 
 .total-price table {
-    border-top: 3px solid #ff523b;
+    border-top: 3px solid #0F2537;
     width: 100%;
     max-width: 200px;
 

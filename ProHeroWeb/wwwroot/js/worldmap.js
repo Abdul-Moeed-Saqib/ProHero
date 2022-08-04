@@ -1,7 +1,4 @@
-function countryName(element, country) {
-    document.getElementById('country-name').innerHTML = country;
-}
-
-function removeCountryName() {
-    document.getElementById('country-name').innerHTML = "";
+function countryName(event) {
+    const country = $(event.target).attr("name");
+    document.getElementById('country-name').textContent = country;
 }

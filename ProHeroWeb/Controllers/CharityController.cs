@@ -15,6 +15,7 @@ namespace ProHeroWeb.Controllers
 
         public async Task<IActionResult> CharityList(string country)
         {
+            ViewBag.Country = country;
             return View("CharityList", await charityRepo.GetCharitiesByCountry(country));
         }
 

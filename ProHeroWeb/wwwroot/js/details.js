@@ -1,5 +1,5 @@
 ﻿function charitydetail(element) {
-    var charityId = $(element).data("id");
+    const charityId = $(element).data("id");
 
     $.ajax({
         type: "POST",
