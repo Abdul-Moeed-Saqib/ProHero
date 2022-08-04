@@ -49,7 +49,7 @@ namespace ProHeroWeb.Data
                         TwintyEighteen = twintyEighteen,
                         TwintySevenTeen = twintySeventeen,
                         TwintySixteen = twintySixteen,
-                        Level = twintyNineteen >= 25.99 ? "Red" : "None"
+                        Level = twintyNineteen >= 24.99 ? "Red" : "None"
                     };
 
                     result.Add(countryStatus);
