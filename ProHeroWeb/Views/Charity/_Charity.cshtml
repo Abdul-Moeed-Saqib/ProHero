@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Charity>
+
+
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li data-id="@item.CharityId" class="charity-item" onclick="charitydetail(this)" style="list-style: none;">
+                    <h4 class="charity-name">@item.Name</h4>
+                    <h6>@item.Location</h6>
+                    <p>@item.SmallDescription</p>
+                </li>
+            }
+        </ul>

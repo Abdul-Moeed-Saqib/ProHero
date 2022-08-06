@@ -6,6 +6,7 @@ namespace ProHeroWeb.Data
     public static class CountryHungerStatus
     {
         private readonly static string url = "https://www.macrotrends.net/countries/ranking/hunger-statistics";
+        public readonly static string[] yearLabels = new string[] { "2019", "2018", "2017", "2016", "2015" };
 
         /// <summary>
         /// Gives live data of hunger issues in each country 
@@ -41,6 +42,7 @@ namespace ProHeroWeb.Data
                     float twintyEighteen = float.Parse(nodes[2].InnerText.TrimEnd('%'));
                     float twintySeventeen = float.Parse(nodes[3].InnerText.TrimEnd('%'));
                     float twintySixteen = float.Parse(nodes[4].InnerText.TrimEnd('%'));
+                    float twintyFifteen = float.Parse(nodes[5].InnerText.TrimEnd('%'));
 
                     CountryStatus countryStatus = new CountryStatus()
                     {
@@ -49,6 +51,7 @@ namespace ProHeroWeb.Data
                         TwintyEighteen = twintyEighteen,
                         TwintySevenTeen = twintySeventeen,
                         TwintySixteen = twintySixteen,
+                        TwintyFifteen = twintyFifteen,
                         Level = twintyNineteen >= 24.99 ? "Red" : "None"
                     };
 

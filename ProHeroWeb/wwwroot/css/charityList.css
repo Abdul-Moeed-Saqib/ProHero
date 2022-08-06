@@ -7,6 +7,7 @@
     position: fixed; bottom: 85px;
     left: 0;
     padding: 10px;
+    animation: widthAnim 0.5s;
     width: 500px;
     height: 83vh;
     overflow-y: auto;
@@ -23,6 +24,7 @@
 
 .charity-menu .charity-item {
     padding: 16px;
+    animation: fadeIn 1s;
 }
 
 .charity-menu .charity-item:hover{
@@ -32,6 +34,38 @@
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+
+#loading-body {
+    position: relative; top: 250px; left: 140px;
+    padding: 80px;
+    border: 16px solid rgba(0, 0, 0, .5);
+    border-radius: 50%;
+    border-top: 16px solid #C13F13;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .emergency-display {
@@ -116,9 +150,15 @@ svg {
     transform: scale(0.8);
 }
 
+.for-chart {
+    position: fixed; top: 180px;
+    width: 850px;
+}
+
 .nav-pills {
     position: relative;
     left: 350px;
+    bottom: 30px;
 }
 
 ::-webkit-scrollbar {
@@ -132,4 +172,24 @@ svg {
 ::-webkit-scrollbar-thumb {
     background: #964B00;
     border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes widthAnim {
+    from {
+        width: 100px;
+    }
+
+    to {
+        width: 500px;
+    }
 }

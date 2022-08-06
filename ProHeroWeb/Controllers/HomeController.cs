@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProHeroWeb.Data;
+using ProHeroWeb.Helpers;
 using ProHeroWeb.Models;
 using System.Diagnostics;
 
@@ -17,7 +18,8 @@ namespace ProHeroWeb.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Status = CountryHungerStatus.ResultStatus();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "status", CountryHungerStatus.ResultStatus());
+            ViewBag.Status = SessionHelper.GetObjectFromJson<List<CountryStatus>>(HttpContext.Session, "status");
             return View();
         }
 

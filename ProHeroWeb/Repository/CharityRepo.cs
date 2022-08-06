@@ -21,7 +21,7 @@ namespace ProHeroWeb.Repository
 
         public async Task<Charity> GetCharityById(string id)
         {
-            return await proHeroDb.Charities.SingleAsync(c => c.CharityId == long.Parse(id));
+            return await proHeroDb.Charities.FirstOrDefaultAsync(c => c.CharityId == long.Parse(id));
         }
     }
 }
