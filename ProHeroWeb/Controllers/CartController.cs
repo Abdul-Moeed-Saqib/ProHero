@@ -8,10 +8,12 @@ namespace ProHeroWeb.Controllers
     public class CartController : Controller
     {
         private readonly ICharityRepo charityRepo;
+        private readonly IUserRepo userRepo;
 
-        public CartController(ICharityRepo charityRepo)
+        public CartController(ICharityRepo charityRepo, IUserRepo userRepo)
         {
             this.charityRepo = charityRepo;
+            this.userRepo = userRepo;
         }
 
         public IActionResult ViewCart()
@@ -83,6 +85,25 @@ namespace ProHeroWeb.Controllers
 
             return RedirectToAction("ViewCart");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ViewCart(User obj)
+        {
+            if (ModelState.IsValid)
+            {
+                userRepo.AddUser(obj);
+                return RedirectToAction("Complete");
+            }
+
+            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
+
+            ViewBag.Cart = cart;
+            ViewBag.total = cart.Sum(c => c.Charity.Donated);
+
+            return View(obj);
+        }
+
 
         private static void AddingToCart(float donated, CharityItem charityItem, Charity charity, List<ShoppingCart> cart)
         {

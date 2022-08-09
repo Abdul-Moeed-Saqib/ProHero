@@ -19,6 +19,7 @@ builder.Services.AddDbContext<ProHeroDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("LocalDbConnection")
     ));
 builder.Services.AddScoped<ICharityRepo, CharityRepo>();
+builder.Services.AddScoped<IUserRepo, UserRepo>();
 
 var app = builder.Build();
 

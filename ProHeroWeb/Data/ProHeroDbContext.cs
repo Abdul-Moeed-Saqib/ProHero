@@ -8,5 +8,6 @@ namespace ProHeroWeb.Data
         public ProHeroDbContext(DbContextOptions<ProHeroDbContext> options) : base(options) { }
 
         public virtual DbSet<Charity> Charities { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

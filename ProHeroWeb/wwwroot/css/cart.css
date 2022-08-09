@@ -24,21 +24,22 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 12px;
     text-align: center;
-    border: 2px groove #0F2537;
     border-radius: 12px;
-    background-color: wheat;
+    box-shadow: 0px 0px 10px #808080;
+    color: white;
+    background-color: #C13F13;
 }
 
 table {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 100%;
     border-collapse: collapse;
-    color: black;
 }
 
 th {
     text-align: left;
     padding: 5px;
-    background-color: #FFA500;
+    background-color: #E95420;
     font-weight: normal;
     text-transform: uppercase;
 }
@@ -48,7 +49,7 @@ td {
 }
 
 table tr {
-    border-bottom: 2px solid #0F2537;
+    border-bottom: 2px solid #E95420;
 }
 
 table tr:last-child {
@@ -100,7 +101,7 @@ td .remove-button:hover {
 }
 
 .total-price table {
-    border-top: 3px solid #0F2537;
+    border-top: 3px solid #E95420;
     width: 100%;
     max-width: 200px;
 
@@ -108,5 +109,9 @@ td .remove-button:hover {
 
 td:last-child {
     text-align: right;
+}
+
+#submitTitle {
+    position: relative; top: -30px;
 }
 
