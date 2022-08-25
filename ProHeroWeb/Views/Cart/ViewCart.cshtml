@@ -6,6 +6,8 @@
 
 <head>
     <link rel="stylesheet" href="~/css/cart.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js" defer></script>
+    <script src="/js/formValidation.js" defer></script>
 </head>
 
 <div class="wrapper">
@@ -86,10 +88,11 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="mb-5">
                 <label asp-for="Email"></label>
                 <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -99,6 +102,7 @@
              <div class="mb-3">
                  <label asp-for="Address.StreetName"></label>
                  <input asp-for="Address.StreetName" class="form-control"/>
+                 <span asp-validation-for="Address.StreetName" class="text-danger"></span>
              </div>
         </div>
 
@@ -107,6 +111,7 @@
                 <div class="mb-3">
                     <label asp-for="Address.City"></label>
                     <input asp-for="Address.City" class="form-control"/>
+                    <span asp-validation-for="Address.City" class="text-danger"></span>
                 </div>
             </div>
 
@@ -116,6 +121,7 @@
                     <select asp-for="Address.Province" class="form-select mb-3">
                         <option selected value="1">Ontario</option>
                     </select>
+                    <span asp-validation-for="Address.Province" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -125,6 +131,7 @@
                 <div class="mb-3">
                     <label asp-for="Address.PostalCode"></label>
                     <input asp-for="Address.PostalCode" class="form-control"/>
+                    <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
@@ -133,6 +140,7 @@
                     <select asp-for="Address.Country" class="form-select mb-3">
                         <option selected value="1">Canada</option>
                     </select>
+                    <span asp-validation-for="Address.Country" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -140,7 +148,39 @@
         <hr class="my-5" />
         <h4 id="submitTitle" class="text-primary text-uppercase">Payment method</h4>
 
-        <button type="submit" class="btn btn-primary">Complete Donation</button>
+        <div class="col-md-12">
+            <div class="mb-4">
+                <label asp-for="Card.CardNumber"></label>
+                <input asp-for="Card.CardNumber" id="cardNumber" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+            <div class="mb-4">
+                <label asp-for="Card.Expiry"></label>
+                <input asp-for="Card.Expiry" id="expiry" placeholder="(MM/YY)" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-4">
+                <label asp-for="Card.Cvv"></label>
+                <input asp-for="Card.Cvv" id="cvv" class="form-control"/>
+            </div>
+
+        </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="mb-4">
+                <label asp-for="Card.CardName"></label>
+                <input asp-for="Card.CardName" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="col text-center">
+            <button type="submit" class="btn btn-primary">Complete Donation</button>
+        </div>
         </form>
     }
     else

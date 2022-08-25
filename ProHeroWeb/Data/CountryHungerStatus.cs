@@ -52,7 +52,7 @@ namespace ProHeroWeb.Data
                         TwintySevenTeen = twintySeventeen,
                         TwintySixteen = twintySixteen,
                         TwintyFifteen = twintyFifteen,
-                        Level = twintyNineteen >= 24.99 ? "Red" : "None"
+                        Level = CalculatingLevels(twintyNineteen) 
                     };
 
                     result.Add(countryStatus);
@@ -60,6 +60,26 @@ namespace ProHeroWeb.Data
             }
 
             return result;
+        }
+
+        private static string CalculatingLevels(float perc)
+        {
+            if (perc >= 24.99)
+            {
+                return "Red";
+            }
+            else if (perc < 24.99 && perc >= 15.99)
+            {
+                return "Orange";
+            }
+            else if (perc < 15.99 && perc >= 9.99)
+            {
+                return "Yellow";
+            }
+            else
+            {
+                return "None";
+            }
         }
     }
 }

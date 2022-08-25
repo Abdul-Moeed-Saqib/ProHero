@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProHeroWeb.Models
 {
+    [Index(nameof(Country), nameof(Name), IsUnique = true)]
     public class Charity
     {
         private long charityId;

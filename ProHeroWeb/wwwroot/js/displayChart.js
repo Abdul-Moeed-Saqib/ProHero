@@ -17,11 +17,11 @@
         const barColor = ["red", "orange", "green", "yellow", "blue"]
 
         new Chart("myChart", {
-            type: "bar",
+            type: "line",
             data: {
                 labels: chartLabels,
                 datasets: [{
-                    label: 'Percentage of hunger',
+                    label: 'Hunger',
                     backgroundColor: barColor,
                     data: countryStatus
                 }]
