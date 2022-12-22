@@ -1,7 +1,9 @@
-﻿@model ProHeroWeb.Models.User
+﻿@using ProHeroWeb.Helpers
+@model ProHeroWeb.Models.User
 
 @{
     ViewData["Title"] = "ViewCart";
+    var countries = GetCountryNames.GetCountries();
 }
 
 <head>
@@ -11,8 +13,6 @@
 </head>
 
 <div class="wrapper">
-     @*  <div class="border-page"> 
-        <h1>Your Cart</h1>*@
         <div class="border p-3 mt-4">
             <div class="row pb-2">
             <h4 class="text-primary text-uppercase">Your Cart</h4>
@@ -118,9 +118,7 @@
             <div class="col-md-6">
                 <div class="mb-3">
                     <label asp-for="Address.Province"></label>
-                    <select asp-for="Address.Province" class="form-select mb-3">
-                        <option selected value="1">Ontario</option>
-                    </select>
+                    <input asp-for="Address.Province" class="form-control"/>
                     <span asp-validation-for="Address.Province" class="text-danger"></span>
                 </div>
             </div>
@@ -138,7 +136,15 @@
                 <div class="mb-3">
                     <label asp-for="Address.Country"></label>
                     <select asp-for="Address.Country" class="form-select mb-3">
-                        <option selected value="1">Canada</option>
+                          @foreach(var country in countries)
+                          {
+                               if (country.Equals("Canada"))
+                               {
+                                   <option selected value="@country">@country</option>   
+                               }
+                              <option value="@country">@country</option>    
+                          }
+
                     </select>
                     <span asp-validation-for="Address.Country" class="text-danger"></span>
                 </div>
@@ -189,5 +195,4 @@
         <h5 class="text-center">Your cart is empty</h5>
     }
     </div>
-    @*</div>*@
   </div>

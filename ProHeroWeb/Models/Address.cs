@@ -25,6 +25,7 @@ namespace ProHeroWeb.Models
         [Required]
         public string City { get => city; set => city = value; }
         [Required]
+        [DisplayName("Province/State")]
         public string Province { get => province; set => province = value; }
         [Required]
         public string Country { get => country; set => country = value; }

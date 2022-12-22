@@ -32,13 +32,13 @@ namespace ProHeroWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(float donated, long charityId)
         {
-            var charityItem = new CharityItem();
+            CharityItem charityItem = new CharityItem();
             var charity = await charityRepo.GetCharityById(charityId.ToString());
-            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
+            List<ShoppingCart> cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
 
             if (cart == null)
             {
-                var newCart = new List<ShoppingCart>();
+                List<ShoppingCart> newCart = new List<ShoppingCart>();
                 AddingToCart(donated, charityItem, charity, newCart);
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", newCart);
 
@@ -47,7 +47,7 @@ namespace ProHeroWeb.Controllers
             {
                 if (IsExist(charityId, cart))
                 {
-                    var index = cart.FindIndex(i => i.Charity.Charity.CharityId == charityId);
+                    int index = cart.FindIndex(i => i.Charity.Charity.CharityId == charityId);
 
                     cart[index].Charity.DonatedStack.Add(donated);
                     cart[index].Charity.Donated += donated;
@@ -66,8 +66,8 @@ namespace ProHeroWeb.Controllers
 
         public IActionResult Remove(long charityId)
         {
-            var cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
-            var index = cart.FindIndex(i => i.Charity.Charity.CharityId == charityId);
+            List<ShoppingCart> cart = SessionHelper.GetObjectFromJson<List<ShoppingCart>>(HttpContext.Session, "cart");
+            int index = cart.FindIndex(i => i.Charity.Charity.CharityId == charityId);
 
             if (cart[index].Quantity > 1)
             {

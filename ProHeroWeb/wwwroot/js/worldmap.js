@@ -19,7 +19,7 @@ function countryStatus() {
     for (var i = 0; i < countryInfo.length; i++) {
         const level = countryInfo[i].Level;
         const country = countryInfo[i].CountryName;
-        color = "";
+        let color = "";
 
         switch (level) {
             case "Red":
@@ -39,7 +39,7 @@ function countryStatus() {
 }
 
 function countryLevels(countries, country, color) {
-    $(countries[country]).css({ "fill": color, "stroke": "#000000" });
+    $(countries[country]).css({ "fill": color, "stroke": "black" });
     $(countries[country]).hover(function () {
         $(this).css("fill", "black");
     }, function () {

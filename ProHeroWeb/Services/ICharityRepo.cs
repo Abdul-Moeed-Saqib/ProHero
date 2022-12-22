@@ -6,5 +6,6 @@ namespace ProHeroWeb.Services
     {
         Task<IEnumerable<Charity>> GetCharitiesByCountry(string country);
         Task<Charity> GetCharityById(string id);
+        void AddCharity(Charity charity);
     }
 }

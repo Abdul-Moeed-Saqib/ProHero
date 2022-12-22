@@ -15,6 +15,24 @@ namespace ProHeroWeb.Controllers
             this.charityRepo = charityRepo;
         }
 
+        public IActionResult AddCharity()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddCharity(Charity charity)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(charity);
+            }
+              
+            charityRepo.AddCharity(charity);
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult CharityList(string country)
         {
             SessionHelper.SetObjectAsJson(HttpContext.Session, "country", country);

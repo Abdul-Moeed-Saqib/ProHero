@@ -1,6 +1,10 @@
 ﻿@using ProHeroWeb.Helpers;
 <!DOCTYPE html>
 <html lang="en">
+@{
+    var cart = Context.Session.GetObjectFromJson<List<ShoppingCart>>("cart");
+    int cartCount = cart != null ? cart.Count : 0;
+}
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,12 +31,15 @@
              <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Add Charity</a>
+          <a class="nav-link" asp-area="" asp-controller="Charity" asp-action="AddCharity">Add Charity</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
+        </li>
+        @*<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
@@ -41,11 +48,16 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
-        </li>
+        </li>*@
       </ul>
       <form class="d-flex">
-        <a class="me-lg-3" asp-controller="Cart" asp-action="ViewCart"><i class="bi bi-bag form-control"></i></a>
-        <label>@ViewBag.TotalCart</label>
+        <a class="me-lg-3" asp-controller="Cart" asp-action="ViewCart">
+            <span class="bi bi-bag form-control"></span>
+            @if (cartCount != 0)
+            {
+                <span class="icon-button_badge">@cartCount</span>          
+            } 
+            </a>
       </form>
     </div>
   </div>

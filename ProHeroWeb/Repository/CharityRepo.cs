@@ -23,5 +23,11 @@ namespace ProHeroWeb.Repository
         {
             return await proHeroDb.Charities.FirstOrDefaultAsync(c => c.CharityId == long.Parse(id));
         }
+
+        public async void AddCharity(Charity charity)
+        {
+            await proHeroDb.Charities.AddAsync(charity);
+            proHeroDb.SaveChanges();
+        }
     }
 }
